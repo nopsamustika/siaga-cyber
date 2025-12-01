@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Halaman Soal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #e0f7ff;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #b8e9f8;
+      border-bottom: 2px solid #90d1e6;
+      position: relative;
+    }
+
+    .logo {
+      height: 60px;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .navigation {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .navigation button {
+      padding: 8px 14px;
+      border: none;
+      background-color: #baf0f8;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .navigation button.active {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .question-box {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .question {
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .options label {
+      display: block;
+      margin-bottom: 10px;
+      background-color: #e6f9ff;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .options input[type="radio"] {
+      margin-right: 8px;
+    }
+
+    .bottom-nav {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .bottom-nav button {
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #baf0f8;
+    }
+
+    .bottom-nav button:hover {
+      background-color: #90e0ef;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <img src="logo-siaga.png" alt="Logo Siaga Siber" class="logo" />
+    <h1 class="header-center">Ujian Cyber Security</h1>
+  </div>
+
+  <div class="container">
+    <div class="navigation" id="soalNav"></div>
+
+    <div class="question-box">
+      <div class="question" id="questionText">Soal akan muncul di sini</div>
+      <div class="options" id="optionsBox"></div>
+    </div>
+
+    <div class="bottom-nav">
+      <button onclick="prevSoal()">Back</button>
+      <button onclick="tandaiRagu()">Ragu</button>
+      <button onclick="nextSoal()">Next</button>
+      <button onclick="selesaiUjian()">Selesai</button>
+    </div>
+  </div>
+
+  <script>
+    const soalData = [
+      {
+        soal: "Apa itu Cybersecurity?",
+        pilihan: ["Perlindungan data digital", "Jenis olahraga", "Media sosial", "Perangkat keras"],
+        jawaban: 0
+      },
+      {
+        soal: "Contoh ancaman siber adalah...",
+        pilihan: ["Membaca buku", "Phishing", "Menulis email", "Menonton film"],
+        jawaban: 1
+      },
+      {
+        soal: "Apa fungsi antivirus?",
+        pilihan: ["Mencetak dokumen", "Melindungi sistem dari virus", "Menghapus file", "Membuat website"],
+        jawaban: 1
+      },
+      {
+        soal: "Kata sandi yang baik sebaiknya...",
+        pilihan: ["123456", "Tanggal lahir", "Kata yang mudah ditebak", "Unik dan kuat"],
+        jawaban: 3
+      },
+      {
+        soal: "Apa itu firewall?",
+        pilihan: ["Aplikasi game", "Dinding api sungguhan", "Sistem keamanan jaringan", "Virus komputer"],
+        jawaban: 2
+      },
+      {
+        soal: "Apa itu privasi digital?",
+        pilihan: ["Rahasia tentang data pribadi online", "Mematikan komputer", "Menghapus game", "Mengganti background"],
+        jawaban: 0
+      },
+      {
+        soal: "Contoh data pribadi adalah...",
+        pilihan: ["Makanan favorit", "Hobi", "Nomor KTP", "Warna kesukaan"],
+        jawaban: 2
+      },
+      {
+        soal: "Cyberbullying adalah...",
+        pilihan: ["Olahraga dunia maya", "Bully lewat internet", "Bermain game", "Berbagi info"],
+        jawaban: 1
+      },
+      {
+        soal: "Yang bukan bagian dari etika online...",
+        pilihan: ["Menyebar hoax", "Sopan di internet", "Menghargai privasi", "Menghormati orang lain"],
+        jawaban: 0
+      },
+      {
+        soal: "Tujuan cybersecurity adalah...",
+        pilihan: ["Membuat virus", "Menyebarkan data", "Melindungi sistem dan data", "Menghapus game"],
+        jawaban: 2
+      }
+    ];
+
+    let current = 0;
+    let jawabanUser = Array(soalData.length).fill(null);
+    let raguUser = Array(soalData.length).fill(false);
+
+    function renderSoal(index) {
+      const soal = soalData[index];
+      document.getElementById("questionText").textContent = `${index + 1}. ${soal.soal}`;
+      const optionsBox = document.getElementById("optionsBox");
+      optionsBox.innerHTML = "";
+      soal.pilihan.forEach((pilihan, i) => {
+        const idRadio = `soal${index}_opsi${i}`;
+        const radio = `
+          <label>
+            <input type="radio" name="soal${index}" value="${i}" ${jawabanUser[index] === i ? "checked" : ""} onclick="pilihJawaban(${index}, ${i})"/>
+            ${pilihan}
+          </label>
+        `;
+        optionsBox.innerHTML += radio;
+      });
+
+      highlightNav();
+    }
+
+    function pilihJawaban(soalIndex, jawabanIndex) {
+      jawabanUser[soalIndex] = jawabanIndex;
+    }
+
+    function prevSoal() {
+      if (current > 0) {
+        current--;
+        renderSoal(current);
+      }
+    }
+
+    function nextSoal() {
+      if (current < soalData.length - 1) {
+        current++;
+        renderSoal(current);
+      }
+    }
+
+    function tandaiRagu() {
+      raguUser[current] = !raguUser[current];
+      highlightNav();
+    }
+
+    function highlightNav() {
+      const nav = document.getElementById("soalNav");
+      nav.innerHTML = "";
+      for (let i = 0; i < soalData.length; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i + 1;
+        btn.className = (i === current ? "active" : "") + (raguUser[i] ? " ragu" : "");
+        if (jawabanUser[i] !== null) {
+          btn.style.backgroundColor = raguUser[i] ? "#ffc107" : "#28a745"; // kuning jika ragu, hijau jika yakin
+          btn.style.color = "white";
+        }
+        btn.onclick = () => {
+          current = i;
+          renderSoal(i);
+        };
+        nav.appendChild(btn);
+      }
+    }
+
+    function selesaiUjian() {
+      let benar = 0;
+      soalData.forEach((item, i) => {
+        if (jawabanUser[i] === item.jawaban) {
+          benar++;
+        }
+      });
+      const skor = Math.round((benar / soalData.length) * 100);
+      localStorage.setItem("totalScore", skor);
+      window.location.href = "hasil.html";
+    }
+
+    // Inisialisasi pertama
+    renderSoal(current);
+  </script>
+</body>
+</html>

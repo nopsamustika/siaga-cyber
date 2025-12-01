@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Halaman Belajar</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e0f7ff;
+      transition: background-color 0.4s ease;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #b8e9f8;
+      border-bottom: 2px solid #90d1e6;
+      position: relative;
+    }
+
+    .logo {
+      height: 63px;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .close-button {
+      background: #b8e9f8;
+      font-size: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .container {
+      display: flex;
+      padding: 15px;
+      gap: 20px;
+    }
+
+    .sidebar {
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  flex-shrink: 0;
+}
+
+
+    .sidebar h3 {
+      background-color: #baf0f8;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .sidebar button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      background-color: #e8f8fc;
+      border: 1px solid #b3dce8;
+      border-radius: 5px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .content {
+      flex-grow: 1;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 20px;
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .module-header {
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .container-gambar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .container-gambar img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      max-height: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="logo-siaga.png" alt="Logo Siaga Siber" class="logo" />
+    <h1 class="header-center">Pengenalan Cyber Security</h1>
+    <a href="materi.html"><button class="close-button">X</button></a>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <h3>Garis besar Kursus</h3>
+      <button onclick="location.href='hasil.html'">Pemeriksaan Pengetahuan Saya</button>
+      <button onclick="location.href='belajar.html'">Materi 1: Apa Itu Cybersecurity?</button>
+      <button onclick="location.href='belajar.html'">Materi 2: Jenis Ancaman</button>
+      <button onclick="location.href='belajar.html'">Materi 3: Alat dan Cara Melindungi</button>
+      <button onclick="location.href='belajar.html'">Materi 4: Etika dan Tanggung Jawab</button>
+      <button onclick="location.href='ujian.html'">Kemampuan : Ujian</button>
+    </div>
+
+    <div class="content">
+      <div class="module-header">Halo... sahabat Zyber dan Zyra!</div>
+      <div class="container-gambar">
+        <img src="semangat.png" alt="Zyber dan Zyra semangat" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Halaman Belajar</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e0f7ff;
+      transition: background-color 0.4s ease;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #b8e9f8;
+      border-bottom: 2px solid #90d1e6;
+      position: relative;
+    }
+
+    .logo {
+      height: 63px;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .close-button {
+      background: #b8e9f8;
+        font-size: 25px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+      padding: 15px;
+      gap: 20px;
+    }
+
+    .sidebar {
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  flex-shrink: 0;
+}
+
+
+    .sidebar h3 {
+      background-color: #baf0f8;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .sidebar button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      background-color: #e8f8fc;
+      border: 1px solid #b3dce8;
+      border-radius: 5px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .content {
+      flex-grow: 1;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 20px;
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .module-header {
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: transform 0.2s ease;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    #btnSalah, #btnBenar {
+      background-color: #ddd;
+    }
+
+    #btnNext {
+      background-color: #18c0f5;
+      color: white;
+      display: none;
+    }
+
+    #btnPrev {
+      background-color: #999;
+      color: white;
+    }
+
+    .karakter {
+      margin-top: 25px;
+      display: none;
+      align-items: center;
+      gap: 15px;
+      animation: slideUp 0.5s ease forwards;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .karakter img {
+      width: 90px;
+    }
+
+    .balon {
+      background: #fefefe;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      position: relative;
+      max-width: 300px;
+    }
+
+    .balon::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: #fefefe transparent;
+    }
+
+    .navigasi {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .audio {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="logo-siaga.png" alt="Logo Siaga Siber" class="logo" />
+    <h1 class="header-center">Pengenalan Cyber Security</h1>
+    <a href="materi.html"><button class="close-button">X</button></a>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <h3>Garis besar Kursus</h3>
+      <button onclick="location.href='hasil.html'">Pemeriksaan Pengetahuan Saya</button>
+      <button onclick="location.href='belajar.html'">Materi 1: Apa Itu Cybersecurity?</button>
+      <button onclick="location.href='belajar.html'">Materi 2: Jenis Ancaman</button>
+      <button onclick="location.href='belajar.html'">Materi 3: Alat dan Cara Melindungi</button>
+      <button onclick="location.href='belajar.html'">Materi 4: Etika dan Tanggung Jawab</button>
+      <button onclick="location.href='ujian.html'">Kemampuan : Ujian</button>
+    </div>
+
+    <div class="content">
+      <div class="module-header">Menampilkan 5 dari 5</div>
+      <p>Selamat! Teman-teman telah menyelesaikan materi 1 bersama zyber dan zyra. Bagaiman lanjut?</p>
+
+      <button id="btnSalah" onclick="jawab(false)">Saya sudah capek, besok aja</button>
+      <button id="btnBenar" onclick="jawab(true)">Saya masih semangat dong, Lanjut! </button>
+
+      <div id="karakterZyber" class="karakter">
+        <img src="zyber.png" alt="Zyber">
+        <div class="balon">Yah... Padahal zyber dan zyra masih banyak hal seru!</div>
+      </div>
+
+      <div id="karakterZyra" class="karakter" style="justify-content: flex-end;">
+        <div class="balon">Bagus... Mari kita lanjutkan materinya!</div>
+        <img src="zyra.png" alt="Zyra">
+      </div>
+
+      <div class="navigasi">
+        <div>
+          <a href="tampilan_3.html"><button id="btnPrev">Sebelumnya</button></a>
+        </div>
+        <div class="audio">
+          <audio controls>
+            <source src="suara.mp3" type="audio/mpeg">
+            Browser Anda tidak mendukung elemen audio.
+          </audio>
+        </div>
+        <div>
+          <a href="awal.html"><button id="btnNext">Selanjutnya</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Tambahkan ini di dalam <body>, sebelum </body> -->
+    <audio id="zyraSound" src="zyra_4.mp3"></audio>
+    <audio id="zyberSound" src="zyber_4.mp3"></audio>
+  <script>
+    function jawab(isBenar) {
+      const btnSalah = document.getElementById("btnSalah");
+      const btnBenar = document.getElementById("btnBenar");
+      const zyber = document.getElementById("karakterZyber");
+      const zyra = document.getElementById("karakterZyra");
+      const btnNext = document.getElementById("btnNext");
+
+      // Reset warna tombol dan sembunyikan karakter
+      btnSalah.style.backgroundColor = "#ddd";
+      btnBenar.style.backgroundColor = "#ddd";
+      zyber.style.display = "none";
+      zyra.style.display = "none";
+
+      // Logika jawaban
+      if (isBenar) {
+        btnBenar.style.backgroundColor = "#4caf50";
+        zyra.style.display = "flex";
+        btnNext.style.display = "inline-block";
+        // Putar suara Zyra
+    const zyraAudio = document.getElementById('zyraSound');
+    zyraAudio.currentTime = 0;
+    zyraAudio.play();
+      } else {
+        btnSalah.style.backgroundColor = "#f44336";
+        zyber.style.display = "flex";
+        const zyberAudio = document.getElementById('zyberSound');
+    zyberAudio.currentTime = 0;
+    zyberAudio.play();
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Halaman Belajar - Text Input</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e0f7ff;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #b8e9f8;
+      border-bottom: 2px solid #90d1e6;
+      position: relative;
+    }
+
+    .logo {
+      height: 63px;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .close-button {
+      background: #b8e9f8;
+      font-size: 25px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+      padding: 15px;
+      gap: 20px;
+    }
+
+    .sidebar {
+      background: #fff;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 250px;
+      flex-shrink: 0;
+    }
+
+    .sidebar h3 {
+      background-color: #baf0f8;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .sidebar button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      background-color: #e8f8fc;
+      border: 1px solid #b3dce8;
+      border-radius: 5px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .content {
+      flex-grow: 1;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 20px;
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .module-header {
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .text-input {
+      width: 100%;
+      padding: 5px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .btn-submit {
+      padding: 5px 10px;
+      background-color: #18c0f5;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .karakter {
+      margin-top: 25px;
+      display: none;
+      align-items: center;
+      gap: 15px;
+      animation: slideUp 0.5s ease forwards;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .karakter img {
+      width: 90px;
+    }
+
+    .balon {
+      background: #fefefe;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 15px;
+      position: relative;
+      max-width: 300px;
+    }
+
+    .balon::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: #fefefe transparent;
+    }
+
+    .navigasi {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    #btnNext {
+      background-color: #18c0f5;
+      color: white;
+      display: none;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #btnPrev {
+      background-color: #999;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .audio {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="logo-siaga.png" alt="Logo Siaga Siber" class="logo" />
+    <h1 class="header-center">Pengenalan Cyber Security</h1>
+    <a href="materi.html"><button class="close-button">X</button></a>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <h3>Garis besar Kursus</h3>
+      <button onclick="location.href='hasil.html'">Pemeriksaan Pengetahuan Saya</button>
+      <button onclick="location.href='belajar.html'">Materi 1: Apa Itu Cybersecurity?</button>
+      <button onclick="location.href='belajar.html'">Materi 2: Jenis Ancaman</button>
+      <button onclick="location.href='belajar.html'">Materi 3: Alat dan Cara Melindungi</button>
+      <button onclick="location.href='belajar.html'">Materi 4: Etika dan Tanggung Jawab</button>
+      <button onclick="location.href='ujian.html'">Kemampuan : Ujian</button>
+    </div>
+
+    <div class="content">
+      <div class="module-header">Menampilkan 3 dari 5</div>
+      <p>Yuk sekarang coba jawab pertanyaan ini dalam kolom teks:</p>
+      <p><strong>Pertanyaan:</strong> Apa nama karakter perempuan yang muncul saat jawaban benar?</p>
+
+      <input id="jawabanInput" type="text" class="text-input" placeholder="Ketik jawaban di sini..." />
+      <button class="btn-submit" onclick="cekJawaban()">Kirim Jawaban</button>
+
+      <div id="karakterZyber" class="karakter">
+        <img src="zyber.png" alt="Zyber">
+        <div class="balon">Jawabanmu belum tepat, coba lagi ya!</div>
+      </div>
+
+      <div id="karakterZyra" class="karakter" style="justify-content: flex-end;">
+        <div class="balon">Benar sekali! Namanya Zyra!</div>
+        <img src="zyra.png" alt="Zyra">
+      </div>
+
+      <div class="navigasi">
+        <div>
+          <a href="tampilan_1.html"><button id="btnPrev">Sebelumnya</button></a>
+        </div>
+        <div class="audio">
+          <audio controls>
+            <source src="suara.mp3" type="audio/mpeg">
+            Browser Anda tidak mendukung elemen audio.
+          </audio>
+        </div>
+        <div>
+          <a href="tampilan_3.html"><button id="btnNext">Selanjutnya</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Suara Zyra dan Zyber -->
+  <audio id="suaraZyra" src="zyra_2.mp3"></audio>
+  <audio id="suaraZyber" src="zyber_2.mp3"></audio>
+
+  <script>
+    function cekJawaban() {
+      const input = document.getElementById("jawabanInput");
+      const jawaban = input.value.trim().toLowerCase();
+      const zyra = document.getElementById("karakterZyra");
+      const zyber = document.getElementById("karakterZyber");
+      const btnNext = document.getElementById("btnNext");
+
+      const suaraZyra = document.getElementById("suaraZyra");
+      const suaraZyber = document.getElementById("suaraZyber");
+
+      // Reset tampilan
+      zyra.style.display = "none";
+      zyber.style.display = "none";
+      input.style.borderColor = "#ccc";
+
+      if (jawaban === "zyra") {
+        input.style.borderColor = "#4caf50";
+        zyra.style.display = "flex";
+        suaraZyra.play(); // putar suara Zyra
+        btnNext.style.display = "inline-block";
+      } else {
+        input.style.borderColor = "#f44336";
+        zyber.style.display = "flex";
+        suaraZyber.play(); // putar suara Zyber
+      }
+    }
+  </script>
+</body>
+</html>

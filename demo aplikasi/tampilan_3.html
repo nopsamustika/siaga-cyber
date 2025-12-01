@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modul Puzzle Cyber Security</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #e0f7ff;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    body.fade-out {
+      opacity: 0;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background-color: #b8e9f8;
+      border-bottom: 2px solid #90d1e6;
+      position: relative;
+    }
+
+    .logo {
+      height: 63px;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .close-button {
+      background: #b8e9f8;
+      font-size: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    .container {
+      display: flex;
+      padding: 15px;
+      gap: 20px;
+    }
+
+    .sidebar {
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  flex-shrink: 0;
+}
+
+
+    .sidebar h3 {
+      background-color: #baf0f8;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .sidebar button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      background-color: #e8f8fc;
+      border: 1px solid #b3dce8;
+      border-radius: 5px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .content {
+      flex-grow: 1;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      padding: 20px;
+      position: relative;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    .module-header {
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .puzzle-board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 5px;
+      justify-content: center;
+      margin: 20px auto;
+    }
+
+    .puzzle-piece {
+      width: 100px;
+      height: 100px;
+      background-size: 300px 300px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }
+
+    .karakter {
+      display: none;
+      align-items: center;
+      gap: 15px;
+      justify-content: flex-end;
+      margin-top: 30px;
+      animation: slideInRight 0.7s ease forwards;
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .karakter img {
+      width: 120px;
+    }
+
+    .balon {
+      background: #fff;
+      padding: 12px 18px;
+      border-radius: 15px;
+      border: 1px solid #ccc;
+      max-width: 300px;
+      font-size: 15px;
+    }
+
+    .navigasi {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .navigasi button, .audio audio {
+      font-size: 15px;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #btnPrev {
+      background-color: #999;
+      color: white;
+    }
+
+    #btnNext {
+      background-color: #18c0f5;
+      color: white;
+      display: none;
+    }
+
+    .audio audio {
+      width: 320px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="logo-siaga.png" alt="Logo Siaga Siber" class="logo" />
+    <h1 class="header-center">Modul Puzzle Cyber Security</h1>
+    <a href="materi.html"><button class="close-button">X</button></a>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <h3>Garis besar Kursus</h3>
+      <button onclick="location.href='hasil.html'">Pemeriksaan Pengetahuan Saya</button>
+      <button onclick="location.href='belajar.html'">Materi 1: Apa Itu Cybersecurity?</button>
+      <button onclick="location.href='belajar.html'">Materi 2: Jenis Ancaman</button>
+      <button onclick="location.href='belajar.html'">Materi 3: Alat dan Cara Melindungi</button>
+      <button onclick="location.href='belajar.html'">Materi 4: Etika dan Tanggung Jawab</button>
+      <button onclick="location.href='ujian.html'">Kemampuan : Ujian</button>
+    </div>
+
+    <div class="content">
+      <div class="module-header">Menampilkan 4 dari 5</div>
+      <p>Sekarang ayo kita pelajari tentang keamanan di dunia maya!</p>
+      <p>Lihat gambar di bawah ini, ada anak-anak yang sedang belajar tentang keamanan siber. Di tengah ada simbol <strong>gembok</strong> besar
+      yang artinya data mereka aman. </p>
+      <p>Yuk, coba susun kembali gambar ini dengan menyusun puzzle!</p>
+
+      <div class="puzzle-board" id="puzzleBoard"></div>
+
+      <div class="karakter" id="zyra">
+        <div class="balon">Keren! Puzzle berhasil disusun dengan benar!</div>
+        <img src="zyra.png" alt="Zyra">
+      </div>
+
+      <div class="navigasi">
+        <button id="btnPrev">Sebelumnya</button>
+        <div class="audio">
+          <audio controls>
+            <source src="suara.mp3" type="audio/mpeg">
+            Browser Anda tidak mendukung elemen audio.
+          </audio>
+        </div>
+        <button id="btnNext">Selanjutnya</button>
+      </div>
+    </div>
+  </div>
+
+  <audio id="swapSound" src="swap.mp3"></audio>
+  <!-- Tambahkan ini di dalam <body>, sebelum </body> -->
+    <audio id="zyraSound" src="zyra_3.mp3"></audio>
+
+  <script>
+    const correctOrder = [0,1,2,3,4,5,6,7,8];
+    let currentOrder = [...correctOrder].sort(() => Math.random() - 0.5);
+    const board = document.getElementById('puzzleBoard');
+    let firstClick = null;
+    const swapSound = document.getElementById('swapSound');
+
+    function createPuzzle() {
+      board.innerHTML = '';
+      currentOrder.forEach((index, i) => {
+        const piece = document.createElement('div');
+        piece.className = 'puzzle-piece';
+        piece.style.backgroundImage = "url('Firefly Shows elementary school children in cartoon form, learning about network security 41870.jpg')";
+        piece.style.backgroundPosition = `-${(index % 3) * 100}px -${Math.floor(index / 3) * 100}px`;
+        piece.dataset.index = i;
+        piece.addEventListener('click', handlePieceClick);
+        board.appendChild(piece);
+      });
+    }
+
+    function handlePieceClick(e) {
+      const clicked = e.currentTarget;
+      if (!firstClick) {
+        firstClick = clicked;
+        clicked.style.borderColor = 'blue';
+      } else {
+        const firstIndex = parseInt(firstClick.dataset.index);
+        const secondIndex = parseInt(clicked.dataset.index);
+        [currentOrder[firstIndex], currentOrder[secondIndex]] = [currentOrder[secondIndex], currentOrder[firstIndex]];
+        swapSound.play();
+        firstClick.style.borderColor = '#ccc';
+        firstClick = null;
+        createPuzzle();
+        checkPuzzle();
+      }
+    }
+
+    function checkPuzzle() {
+      const isCorrect = currentOrder.every((val, idx) => val === correctOrder[idx]);
+      if (isCorrect) {
+        document.getElementById('zyra').style.display = 'flex';
+        document.getElementById('btnNext').style.display = 'inline-block';
+        // Putar suara Zyra
+    const zyraAudio = document.getElementById('zyraSound');
+    zyraAudio.currentTime = 0;
+    zyraAudio.play();
+      }
+    }
+
+    document.getElementById('btnNext').addEventListener('click', function () {
+      document.body.classList.add('fade-out');
+      setTimeout(() => window.location.href = 'tampilan_4.html', 500);
+    });
+
+    document.getElementById('btnPrev').addEventListener('click', function () {
+      document.body.classList.add('fade-out');
+      setTimeout(() => window.location.href = 'tampilan_2.html', 500);
+    });
+
+    createPuzzle();
+  </script>
+</body>
+</html>

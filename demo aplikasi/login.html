@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Siaga Siber</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      display: flex;
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+        .left-side {
+    width: 50%;
+    background: #e9f1fb url('bg.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    }
+
+    /* Logo Kiri Atas */
+    .logo-top-left {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      gap: 15px;
+    }
+    .logo-top-left img {
+      width: 60px;
+    }
+
+    /* Logo Tengah */
+    .logo-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .logo-center img {
+      width: 250px;
+    }
+
+    .right-side {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background-color: #fff;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .login-box h2 {
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .login-box p {
+      color: #444;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group span.help-block {
+      font-size: 12px;
+      color: red;
+    }
+
+    .checkbox {
+      margin-bottom: 10px;
+    }
+
+    .btn-login {
+      width: 100%;
+      background: #005b99;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-login:hover {
+      background: #004777;
+    }
+
+    .forgot-link {
+      display: block;
+      text-align: right;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .forgot-link a {
+      text-decoration: none;
+      color: green;
+    }
+
+    .forgot-link a:hover {
+      text-decoration: underline;
+    }
+
+    #infoMessage {
+      text-align: center;
+      color: red;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+</head>
+<body>
+  <div class="left-side">
+    <!-- Gambar logo, ganti src sesuai file kamu -->
+    <div class="logo-top-left">
+        <img src="logo-unimma.png" alt="Unimma">
+        <img src="logo-kemdikbud.png" alt="Kemdikbud">
+    </div>
+    <div class="logo-center">
+        <img src="logo-siaga.png" alt="Siaga Siber">
+    </div>
+  </div>
+
+    <div class="right-side">
+    <div class="login-box">
+      <h2>Selamat Datang</h2>
+      <p>Mohon masukkan akun anda!</p>
+      <form onsubmit="return loginCheck()">
+        <div class="form-group">
+          <input type="text" id="username" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+          <input type="password" id="password" placeholder="Password" required>
+        </div>
+        <button class="btn-login" type="submit">Login</button>
+      </form>
+      <div class="forgot-link">
+        <a href="#">Lupa Password?</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function loginCheck() {
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+
+      // Username dan password statik
+      if (user === 'nopsa' && pass === '12345') {
+        window.location.href = 'dashboard.html'; // Halaman tujuan
+      } else {
+        alert("Username atau Password salah!");
+      }
+
+      return false;
+    }
+  </script>
+
+</body>
+</html>

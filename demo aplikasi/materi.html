@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Materi Belajar - Siaga Siber</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: url('bg-dashboard.png') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+    }
+
+    .content-wrapper {
+      padding: 30px;
+    }
+
+    /* HEADER */
+    header {
+      background-color: rgba(7, 181, 255, 0.596);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      position: relative;
+      width: 100vw;
+    }
+
+    .logo img {
+      height: 60px;
+    }
+
+    .header-title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 25px;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .user-info img {
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+    }
+
+    h1 {
+      text-align: left;
+      margin: 20px 0 10px;
+      font-size: 20px;
+      color: #222;
+    }
+
+    .info {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #333;
+      text-align: left;
+    }
+
+    .materi-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .card {
+      display: flex;
+      background-color: #fff;
+      border-left: 5px solid #00aaff;
+      border-radius: 8px;
+      padding: 15px;
+      gap: 15px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      flex-wrap: nowrap;
+      align-items: flex-start;
+    }
+
+    .card img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    .card-content {
+      flex: 1;
+    }
+
+    .badge {
+      font-size: 11px;
+      background-color: #f5c542;
+      color: #000;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-right: 5px;
+    }
+
+    .badge.secondary {
+      background-color: #ddd;
+    }
+
+    .content-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .left-side {
+      max-width: 75%;
+    }
+
+    .left-side h3 {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .right-side .circle-score {
+      width: 40px;
+      height: 40px;
+      background-color: #2196F3;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .progress-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .progress-bar {
+      flex-grow: 1;
+      height: 10px;
+      background-color: #eee;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .progress-bar span {
+      display: block;
+      height: 100%;
+      background-color: #4caf50;
+    }
+
+    .progress-text {
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .btn-mulai {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 4px 8px;
+      border: none;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn-disable {
+      background-color: #f44336;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .left-side,
+      .right-side {
+        max-width: 100%;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .card img {
+        width: 100%;
+        height: auto;
+      }
+
+      .content-row {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo-siaga.png" alt="Logo Siaga Siber">
+    </div>
+    <div class="header-title">Siaga Siber</div>
+    <div class="user-info">
+      <a href="#" onclick="logoutConfirm()" title="Logout">
+        <img src="user-icon.png" alt="User Icon">
+      </a>
+      <div>
+        <strong>Nopsa</strong><br>
+        <small>Siswa</small>
+      </div>
+    </div>
+  </header>
+
+  <div class="content-wrapper">
+    <h1>Materi Belajar</h1>
+    <p class="info">Kamu bisa mengakses materi hingga kuis di sini</p>
+  <div class="materi-container">
+
+    <!-- Contoh 1 -->
+    <div class="card">
+      <img src="bab1.jpg" alt="Bab 1">
+      <div class="card-content">
+        <span class="badge">Proses Belajar</span>
+        <div class="content-row">
+          <div class="left-side">
+            <h3>Pengantar Cybersecurity: Meningkatkan Pengetahuan dan Berpikir Kritis</h3>
+            <div>Bergabung sejak: 2 Agustus 2025</div>
+          </div>
+          <div class="right-side">
+            <div class="circle-score">70</div>
+          </div>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar"><span style="width: 48%;"></span></div>
+          <div class="progress-text">48%</div>
+        </div>
+        <a href="awal.html"><button class="btn-mulai">Mulai</button></a>
+      </div>
+    </div>
+
+    <!-- Contoh 2 -->
+    <div class="card">
+      <img src="bab2.jpg" alt="Bab 2">
+      <div class="card-content">
+        <span class="badge">Proses Belajar</span>
+        <span class="badge secondary">Belum Bergabung</span>
+        <div class="content-row">
+          <div class="left-side">
+            <h3>Privasi Online di Internet dan Media Sosial</h3>
+            <div>Bergabung sejak: -</div>
+          </div>
+          <div class="right-side">
+            <div class="circle-score">0</div>
+          </div>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar"><span style="width: 0%;"></span></div>
+          <div class="progress-text">0%</div>
+        </div>
+        <button class="btn-mulai btn-disable" disabled>Selesaikan materi sebelumnya!</button>
+      </div>
+    </div>
+
+    <!-- Contoh 3 -->
+    <div class="card">
+      <img src="bab3.jpg" alt="Bab 2">
+      <div class="card-content">
+        <span class="badge">Proses Belajar</span>
+        <span class="badge secondary">Belum Bergabung</span>
+        <div class="content-row">
+          <div class="left-side">
+            <h3>Jenis-Jenis Data Pribadi di Jejaring Sosial</h3>
+            <div>Bergabung sejak: -</div>
+          </div>
+          <div class="right-side">
+            <div class="circle-score">0</div>
+          </div>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar"><span style="width: 0%;"></span></div>
+          <div class="progress-text">0%</div>
+        </div>
+        <button class="btn-mulai btn-disable" disabled>Selesaikan materi sebelumnya!</button>
+      </div>
+    </div>
+
+    <!-- Contoh 4 -->
+    <div class="card">
+      <img src="bab4.jpg" alt="Bab 2">
+      <div class="card-content">
+        <span class="badge">Proses Belajar</span>
+        <span class="badge secondary">Belum Bergabung</span>
+        <div class="content-row">
+          <div class="left-side">
+            <h3>Cyberbullying</h3>
+            <div>Bergabung sejak: -</div>
+          </div>
+          <div class="right-side">
+            <div class="circle-score">0</div>
+          </div>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar"><span style="width: 0%;"></span></div>
+          <div class="progress-text">0%</div>
+        </div>
+        <button class="btn-mulai btn-disable" disabled>Selesaikan materi sebelumnya!</button>
+      </div>
+    </div>
+
+    <!-- Contoh 5 -->
+    <div class="card">
+      <img src="bab5.jpg" alt="Bab 2">
+      <div class="card-content">
+        <span class="badge">Proses Belajar</span>
+        <span class="badge secondary">Belum Bergabung</span>
+        <div class="content-row">
+          <div class="left-side">
+            <h3>Risiko Konten</h3>
+            <div>Bergabung sejak: -</div>
+          </div>
+          <div class="right-side">
+            <div class="circle-score">0</div>
+          </div>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar"><span style="width: 0%;"></span></div>
+          <div class="progress-text">0%</div>
+        </div>
+        <button class="btn-mulai btn-disable" disabled>Selesaikan materi sebelumnya!</button>
+      </div>
+    </div>
+    
+
+  </div>
+
+  <script>
+    function logoutConfirm() {
+      if (confirm("Apakah kamu yakin ingin logout?")) {
+        window.location.href = 'login.html';
+      }
+    }
+  </script>
+
+</body>
+</html>
